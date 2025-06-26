@@ -2,307 +2,174 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Love Story</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Happy Birthday Love 🎉</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background: #fffafc;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fef6f9;
       color: #333;
+      overflow-x: hidden;
+    }
+    #overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 105, 180, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+    }
+    #overlay a {
+      font-size: 2.5rem;
+      color: #fff;
+      text-decoration: none;
+      padding: 20px 40px;
+      background: rgba(0,0,0,0.2);
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+    #overlay a:hover {
+      background: rgba(0,0,0,0.4);
     }
     header, footer {
-      background-color: #ffb6c1;
-      padding: 20px;
       text-align: center;
+      padding: 2rem;
+      background: #ffe6f0;
     }
     header h1, footer h2 {
-      margin: 0;
-    }
-    .timeline {
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
-    .entry {
-      margin-bottom: 40px;
-      background: #fff;
-      padding: 15px;
-      border-left: 4px solid #ff69b4;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .entry h2 {
       margin: 0 0 10px;
       color: #c71585;
     }
+    .timeline {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+    .entry {
+      background: #ffffff;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      border-left: 6px solid #ff69b4;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      border-radius: 8px;
+    }
+    .entry h2 {
+      margin-top: 0;
+      color: #d81b60;
+    }
     .entry img, .entry video {
-      max-width: 100%;
-      border-radius: 10px;
-    }
-    #lock-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: #fff0f5;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-    #lock-screen input {
-      padding: 10px;
-      font-size: 1em;
-      margin-top: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    #unlock-btn {
-      margin-top: 10px;
-      padding: 10px 20px;
-      background: #ff69b4;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 1rem;
     }
     audio {
       display: none;
     }
     .feedback {
-      background: #fff0f5;
-      padding: 30px;
+      max-width: 600px;
+      margin: 3rem auto;
       text-align: center;
+      background: #ffe6f0;
+      padding: 2rem;
+      border-radius: 10px;
     }
     .feedback textarea {
-      width: 90%;
-      max-width: 600px;
+      width: 100%;
       height: 120px;
       padding: 10px;
+      font-size: 1rem;
       border: 2px solid #ff69b4;
       border-radius: 10px;
-      font-size: 1em;
-      resize: none;
-      background: #fff;
     }
     .feedback button {
-      margin-top: 15px;
+      margin-top: 1rem;
       padding: 10px 20px;
-      font-size: 1em;
-      background-color: #ff69b4;
-      color: white;
+      font-size: 1rem;
+      background: #ff69b4;
+      color: #fff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
     }
+    .heart {
+      position: absolute;
+      font-size: 1.5rem;
+      color: rgba(255,20,147,0.8);
+      animation: float 6s ease-in infinite;
+      pointer-events: none;
+      user-select: none;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+    }
   </style>
   <script>
     function unlockSite() {
-      const password = document.getElementById('password').value;
-      if (password === '131224') {
-        document.getElementById('lock-screen').style.display = 'none';
+      const pwd = document.getElementById('password').value;
+      if (pwd === '131224') {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('lock').style.display = 'none';
       } else {
-        alert('Wrong password baby 🥺');
+        alert('Incorrect password, my love 😘');
       }
     }
     function submitFeedback() {
-      const feedback = document.getElementById('feedbackText').value;
-      if (feedback.trim() !== '') {
-        alert('Aww thank you baby! 🥰 Your words mean everything.');
+      const txt = document.getElementById('feedbackText').value.trim();
+      if (txt) {
+        alert('Your message touches my heart ❤️');
         document.getElementById('feedbackText').value = '';
       } else {
-        alert('Write something cute first baby 😚');
+        alert('Please write something sweet, baby 🥹');
       }
     }
+    document.addEventListener('DOMContentLoaded', () => {
+      for (let i = 0; i < 20; i++) {
+        const h = document.createElement('div');
+        h.className = 'heart';
+        h.style.left = Math.random() * 100 + 'vw';
+        h.style.top = Math.random() * 100 + 'vh';
+        document.body.appendChild(h);
+      }
+    });
   </script>
-<style>
-  .typing {
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 3px solid white;
-    width: 0;
-    animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
-  }
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  }
-  @keyframes blink {
-    50% { border-color: transparent }
-  }
-  .heart {
-    position: absolute;
-    color: red;
-    font-size: 2rem;
-    animation: float 5s infinite ease-in;
-  }
-  @keyframes float {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
-  }
-</style>
-
-<div id="happy-birthday-love-screen" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#ff69b4; color:white; font-size:2.5rem; display:flex; align-items:center; justify-content:center; z-index:9998;">
-  <div style="text-align:center;">
-    <div class="typing">Happy Birthday Love 💖</div>
-    <div id="hearts-container-2"></div>
-  </div>
-</div>
-<script>
-  const container2 = document.getElementById("hearts-container-2");
-  for (let i = 0; i < 20; i++) {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.top = Math.random() * 100 + "vh";
-    heart.textContent = "❤️";
-    container2.appendChild(heart);
-  }
-  setTimeout(() => {
-    document.getElementById('happy-birthday-love-screen').style.display = 'none';
-  }, 2500);
-</script>
-
-<div id="happy-birthday-love-screen" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#ff69b4; color:white; font-size:2.5rem; display:flex; align-items:center; justify-content:center; z-index:9998;">
-  <div>Happy Birthday Love 💖</div>
-</div>
-<script>
-  setTimeout(() => {
-    document.getElementById('happy-birthday-love-screen').style.display = 'none';
-  }, 2000); // Show for 2 seconds
-</script>
-
 </head>
 <body>
-
-
-<style>
-  .heart {
-    position: absolute;
-    color: red;
-    font-size: 2rem;
-    animation: float 4s infinite ease-in;
-  }
-  @keyframes float {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
-  }
-</style>
-<div id="hello-bandar-screen" style="position:fixed; top:0; left:0; width:100%; height:100%; background:black; color:white; font-size:2.5rem; display:flex; align-items:center; justify-content:center; z-index:9999;">
-  <div style="text-align:center;">
-    Hello Bandar 🐵
-    <div id="hearts-container"></div>
+  <div id="overlay">
+    <a href="#feedback" onclick="unlockSite()">Happy Birthday Baby 💖</a>
   </div>
-</div>
-<script>
-  const container = document.getElementById("hearts-container");
-  for (let i = 0; i < 20; i++) {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.top = Math.random() * 100 + "vh";
-    heart.textContent = "❤️";
-    container.appendChild(heart);
-  }
-  setTimeout(() => {
-    document.getElementById('hello-bandar-screen').style.display = 'none';
-  }, 2000);
-</script>
-
-
-  <div id="lock-screen">
-    <h2>Enter Password to Unlock 🌸</h2>
-    <input type="password" id="password" placeholder="Enter password">
-    <button id="unlock-btn" onclick="unlockSite()">Unlock</button>
-  </div>
+  <div id="lock" style="display:none;"></div>
 
   <audio autoplay loop>
     <source src="raabta.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
   </audio>
 
   <header>
     <h1>Our Love Story</h1>
-    <p>From classmate to friendship and to forever ❤️</p>
+    <p>From classmates to forever — celebrating you ❤️</p>
   </header>
 
-  <div class="timeline">
+  <section class="timeline">
+    <!-- Timeline entries here (same format) -->
     <div class="entry">
-      <h2>20 March 2023 – Didi's Engagement</h2>
-      <p>That day we started talking endlessly, became friends, and got to know each other deeply.</p>
+      <h2>20 March 2023 – Our Journey Begins</h2>
+      <p>We started talking that day—and never stopped.</p>
     </div>
+    <!-- More entries... -->
+  </section>
 
-    <div class="entry">
-      <h2>9 May 2023 – Didi's Wedding</h2>
-      <p>Another special day — our bond kept growing stronger.</p>
-      <img src="photo2.jpg" alt="Didi's Wedding">
-    </div>
-
-    <div class="entry">
-      <h2>🎥 A Memory Video</h2>
-      <video controls>
-        <source src="VN20250623_155439.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-
-    <div class="entry">
-      <h2>💌 Love Message</h2>
-      <p>You always ask the question to me: <em>"Why I select you?"</em><br><br>
-      Because even after countless mood swings, my crazy demands, and my stupid arguments, you never gave up on me ❤️<br>
-      You’re the first one I talk so much to, got so comfortable with — because I always wanted a man just like my dad, and see… I got it 🫶🏻<br>
-      You’re another version of papa, that’s why I always let it be your silliness.<br>
-      Even when I said “Baat nahi karni”, I always wanted to stay on call with you.<br>
-      You’re that one person in my life — no matter how mad I am, I just want to talk to you 🥹<br>
-      You think you're not good or perfect, but remember this — my baby (Harshal) is always perfect and special to me 💕<br>
-      You’re my first love baby and I’ll make sure to stay with you forever ❤️<br>
-      Happiest Birthday Baby — may you chase everything your heart desires ✨<br><br>
-      Lots of love from your chimini 🫶🏻 I LOVE YOU BABY 🥰</p>
-    </div>
-
-    <div class="entry">
-      <h2>21 December 2023 – First Real Outing</h2>
-      <p>I’ll never forget your scared reaction on the big ride 😂</p>
-      <img src="photo4.jpg" alt="Fun Ride">
-    </div>
-
-    <div class="entry">
-      <h2>2024 – Feelings Grew Stronger</h2>
-      <p>Late-night calls, talking till 4am. You became my best friend, my special one. I started liking you but chose to stay friends… for now.</p>
-      <img src="photo5.jpg" alt="Mountain Memory">
-    </div>
-
-    <div class="entry">
-      <h2>13 December 2024 – Our Relationship Begins</h2>
-      <p>No proposal, no drama — just a simple, heartfelt text. We decided to call each other GF & BF from that day onwards. This date will always be special for me. ❤️ And in 2025 our love life too much magical</p>
-    </div>
-  </div>
+  <section class="feedback" id="feedback">
+    <h2>💬 Send Your Birthday Love</h2>
+    <textarea id="feedbackText" placeholder="Write your thoughts here..."></textarea><br>
+    <button onclick="submitFeedback()">Send 💌</button>
+  </section>
 
   <footer>
-    <h2>Happy Birthday, My Love 💖</h2>
-    <p>This story is ours — real, beautiful, and just beginning. I love you.</p>
-    <p><strong>Birthday Plan:</strong> Get ready by 11 AM — I’ll come to pick you up. We’ll go to the temple like kapaleshwar and swami narayan just to take blessing then come home before 1 i have time limit. ✨</p>
+    <h2>Happy Birthday, My Love 💗</h2>
+    <p>Get ready by 11 AM. We’re heading to the temple for blessings, then spending the day together.</p>
   </footer>
-
-  <div class="feedback">
-    <h2>💬 Tell me how you liked this surprise baby 🥹</h2>
-    <textarea id="feedbackText" placeholder="Write your thoughts here, my love..."></textarea><br>
-    <button onclick="submitFeedback()">Send your love 💌</button>
-  </div>
 </body>
 </html>
-
-<script>
-  const heartLove = document.getElementById("love-hearts");
-  for (let i = 0; i < 15; i++) {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.top = Math.random() * 100 + "vh";
-    heart.textContent = "❤️";
-    heartLove.appendChild(heart);
-  }
-</script>
