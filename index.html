@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Happy Birthday Love 🎉</title>
   <style>
     body {
@@ -13,27 +13,52 @@
       color: #333;
       overflow-x: hidden;
     }
+
+    /* 🎀 Welcome Screen Overlay */
     #overlay {
       position: fixed;
       inset: 0;
-      background: rgba(255, 105, 180, 0.8);
+      background: rgba(255, 105, 180, 0.9);
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
+      text-align: center;
       z-index: 100;
+      transition: opacity 1s ease;
     }
-    #overlay a {
+    #overlay h1 {
+      color: white;
       font-size: 2.5rem;
-      color: #fff;
-      text-decoration: none;
-      padding: 20px 40px;
-      background: rgba(0,0,0,0.2);
+      margin-bottom: 1rem;
+    }
+    #overlay button {
+      padding: 15px 30px;
+      font-size: 1.5rem;
+      background: #fff;
+      color: #ff69b4;
+      border: none;
       border-radius: 10px;
-      transition: background 0.3s;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s, transform 0.2s;
     }
-    #overlay a:hover {
-      background: rgba(0,0,0,0.4);
+    #overlay button:hover {
+      background: #ffe6f0;
+      transform: scale(1.05);
     }
+
+    /* 🎭 Fade Animation */
+    #overlay.fade-out {
+      animation: fadeOut 1s forwards;
+    }
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
     header, footer {
       text-align: center;
       padding: 2rem;
@@ -43,6 +68,7 @@
       margin: 0 0 10px;
       color: #c71585;
     }
+
     .timeline {
       max-width: 800px;
       margin: 3rem auto;
@@ -53,7 +79,7 @@
       margin-bottom: 2rem;
       padding: 1.5rem;
       border-left: 6px solid #ff69b4;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
       border-radius: 8px;
     }
     .entry h2 {
@@ -65,9 +91,11 @@
       border-radius: 8px;
       margin-top: 1rem;
     }
+
     audio {
       display: none;
     }
+
     .feedback {
       max-width: 600px;
       margin: 3rem auto;
@@ -94,29 +122,42 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
+    /* 💕 Floating Hearts */
     .heart {
       position: absolute;
       font-size: 1.5rem;
-      color: rgba(255,20,147,0.8);
+      color: rgba(255, 20, 147, 0.8);
       animation: float 6s ease-in infinite;
       pointer-events: none;
       user-select: none;
     }
     @keyframes float {
-      0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
-    }
-  </style>
-  <script>
-    function unlockSite() {
-      const pwd = document.getElementById('password').value;
-      if (pwd === '131224') {
-        document.getElementById('overlay').style.display = 'none';
-        document.getElementById('lock').style.display = 'none';
-      } else {
-        alert('Incorrect password, my love 😘');
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(0.5);
+        opacity: 0;
       }
     }
+  </style>
+
+  <script>
+    function revealSurprise() {
+      const overlay = document.getElementById('overlay');
+      overlay.classList.add('fade-out');
+      setTimeout(() => overlay.style.display = 'none', 1000);
+
+      const audio = document.querySelector('audio');
+      if (audio) {
+        audio.play().catch(() => {
+          console.log('Autoplay blocked — user gesture needed.');
+        });
+      }
+    }
+
     function submitFeedback() {
       const txt = document.getElementById('feedbackText').value.trim();
       if (txt) {
@@ -126,50 +167,57 @@
         alert('Please write something sweet, baby 🥹');
       }
     }
+
     document.addEventListener('DOMContentLoaded', () => {
       for (let i = 0; i < 20; i++) {
         const h = document.createElement('div');
         h.className = 'heart';
         h.style.left = Math.random() * 100 + 'vw';
-        h.style.top = Math.random() * 100 + 'vh';
+        h.style.top = '100vh';
         document.body.appendChild(h);
       }
     });
   </script>
 </head>
-<body>
-  <div id="overlay">
-    <a href="#feedback" onclick="unlockSite()">Happy Birthday Baby 💖</a>
-  </div>
-  <div id="lock" style="display:none;"></div>
 
+<body>
+  <!-- 🎉 Welcome Screen -->
+  <div id="overlay">
+    <h1>Happy Birthday Baby 💖</h1>
+    <button onclick="revealSurprise()">Reveal Your Surprise 🎁</button>
+  </div>
+
+  <!-- 🎵 Background Music -->
   <audio autoplay loop>
-    <source src="raabta.mp3" type="audio/mpeg">
+    <source src="raabta.mp3" type="audio/mpeg" />
   </audio>
 
+  <!-- 🌸 Header -->
   <header>
     <h1>Our Love Story</h1>
     <p>From classmates to forever — celebrating you ❤️</p>
   </header>
 
+  <!-- ⏳ Timeline -->
   <section class="timeline">
-    <!-- Timeline entries here (same format) -->
     <div class="entry">
       <h2>20 March 2023 – Our Journey Begins</h2>
       <p>We started talking that day—and never stopped.</p>
     </div>
-    <!-- More entries... -->
+    <!-- Add more timeline entries here -->
   </section>
 
+  <!-- 💬 Feedback Section -->
   <section class="feedback" id="feedback">
     <h2>💬 Send Your Birthday Love</h2>
-    <textarea id="feedbackText" placeholder="Write your thoughts here..."></textarea><br>
+    <textarea id="feedbackText" placeholder="Write your thoughts here..."></textarea><br />
     <button onclick="submitFeedback()">Send 💌</button>
   </section>
 
+  <!-- 🥰 Footer -->
   <footer>
     <h2>Happy Birthday, My Love 💗</h2>
-    <p>Get ready by 11 AM. We’re heading to the temple for blessings, then spending the day together.</p>
+    <p>Get ready by 11 AM. We’re heading to the temple (kapaleshwar and swaminarayan) for blessings, then I'll go home before 1 .</p>
   </footer>
 </body>
 </html>
