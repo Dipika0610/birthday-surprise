@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Love Story</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fffafc;
+      color: #333;
+    }
+    header, footer {
+      background-color: #ffb6c1;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1, footer h2 {
+      margin: 0;
+    }
+    .timeline {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    .entry {
+      margin-bottom: 40px;
+      background: #fff;
+      padding: 15px;
+      border-left: 4px solid #ff69b4;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .entry h2 {
+      margin: 0 0 10px;
+      color: #c71585;
+    }
+    .entry img, .entry video {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    #lock-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #fff0f5;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    #lock-screen input {
+      padding: 10px;
+      font-size: 1em;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #unlock-btn {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    audio {
+      display: none;
+    }
+    .feedback {
+      background: #fff0f5;
+      padding: 30px;
+      text-align: center;
+    }
+    .feedback textarea {
+      width: 90%;
+      max-width: 600px;
+      height: 120px;
+      padding: 10px;
+      border: 2px solid #ff69b4;
+      border-radius: 10px;
+      font-size: 1em;
+      resize: none;
+      background: #fff;
+    }
+    .feedback button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function unlockSite() {
+      const password = document.getElementById('password').value;
+      if (password === '131225') {
+        document.getElementById('lock-screen').style.display = 'none';
+      } else {
+        alert('Wrong password baby 🥺');
+      }
+    }
+    function submitFeedback() {
+      const feedback = document.getElementById('feedbackText').value;
+      if (feedback.trim() !== '') {
+        alert('Aww thank you baby! 🥰 Your words mean everything.');
+        document.getElementById('feedbackText').value = '';
+      } else {
+        alert('Write something cute first baby 😚');
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="lock-screen">
+    <h2>Enter Password to Unlock 🌸</h2>
+    <input type="password" id="password" placeholder="Enter password">
+    <button id="unlock-btn" onclick="unlockSite()">Unlock</button>
+  </div>
+
+  <audio autoplay loop>
+    <source src="raabta.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <header>
+    <h1>Our Love Story</h1>
+    <p>From friendship to forever ❤️</p>
+  </header>
+
+  <div class="timeline">
+    <div class="entry">
+      <h2>20 March 2023 – Didi's Engagement</h2>
+      <p>That day we started talking endlessly, became friends, and got to know each other deeply.</p>
+    </div>
+
+    <div class="entry">
+      <h2>9 May 2023 – Didi's Wedding</h2>
+      <p>Another special day — our bond kept growing stronger.</p>
+      <img src="photo2.jpg" alt="Didi's Wedding">
+    </div>
+
+    <div class="entry">
+      <h2>🎥 A Memory Video</h2>
+      <video controls>
+        <source src="VN20250623_155439.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <div class="entry">
+      <h2>💌 Love Message</h2>
+      <p>You always ask the question to me: <em>"Why I select you?"</em><br><br>
+      Because even after countless mood swings, my crazy demands, and my stupid arguments, you never gave up on me ❤️<br>
+      You’re the first one I talk so much to, got so comfortable with — because I always wanted a man just like my dad, and see… I got it 🫶🏻<br>
+      You’re another version of papa, that’s why I always let it be your silliness.<br>
+      Even when I said “Baat nahi karni”, I always wanted to stay on call with you.<br>
+      You’re that one person in my life — no matter how mad I am, I just want to talk to you 🥹<br>
+      You think you're not good or perfect, but remember this — my baby (Harshal) is always perfect and special to me 💕<br>
+      You’re my first love baby and I’ll make sure to stay with you forever ❤️<br>
+      Happiest Birthday Baby — may you chase everything your heart desires ✨<br><br>
+      Lots of love from your chimini 🫶🏻 I LOVE YOU BABY 🥰</p>
+    </div>
+
+    <div class="entry">
+      <h2>21 December 2023 – First Real Outing</h2>
+      <p>I’ll never forget your scared reaction on the big ride 😂</p>
+      <img src="photo4.jpg" alt="Fun Ride">
+    </div>
+
+    <div class="entry">
+      <h2>2024 – Feelings Grew Stronger</h2>
+      <p>Late-night calls, talking till 4am. You became my best friend, my special one. I started liking you but chose to stay friends… for now.</p>
+      <img src="photo5.jpg" alt="Mountain Memory">
+    </div>
+
+    <div class="entry">
+      <h2>13 December 2024 – Our Relationship Begins</h2>
+      <p>No proposal, no drama — just a simple, heartfelt text. We decided to call each other GF & BF from that day onwards. This date will always be special for me. ❤️</p>
+    </div>
+  </div>
+
+  <footer>
+    <h2>Happy Birthday, My Love 💖</h2>
+    <p>This story is ours — real, beautiful, and just beginning. I love you.</p>
+    <p><strong>Birthday Plan:</strong> Get ready by 11 AM — I’ll come to pick you up. We’ll go to the temple first and then come home for the rest of the surprise. ✨</p>
+  </footer>
+
+  <div class="feedback">
+    <h2>💬 Tell me how you liked this surprise baby 🥹</h2>
+    <textarea id="feedbackText" placeholder="Write your thoughts here, my love..."></textarea><br>
+    <button onclick="submitFeedback()">Send your love 💌</button>
+  </div>
+</body>
+</html>
